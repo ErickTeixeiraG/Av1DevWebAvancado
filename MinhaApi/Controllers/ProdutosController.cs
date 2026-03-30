@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ProdutosApi;
 [ApiController] 
-[Route("api/[ontroller]")] 
+[Route("api/[controller]")] 
 public class ProdutosController : ControllerBase{
     private readonly AppDbContext _context;
 
@@ -44,7 +44,10 @@ public class ProdutosController : ControllerBase{
         var existe = await _context.Produtos.FindAsync(id);
         if(existe is null) return NotFound();
 
-        _context.Entry(Produto).State = EntityState.Modified;
+        //_context.Entry(Produto).State = EntityState.Modified; isso por algum motivo não rodou, algo com o findasync e o entry produto estarem buscando em duplicidade o item, então pesquisei campo a campo
+        existe.Nome = Produto.Nome;
+        existe.Preco = Produto.Preco;
+        existe.Estoque = Produto.Estoque;
 
         await _context.SaveChangesAsync();
 

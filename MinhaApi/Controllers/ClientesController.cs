@@ -44,7 +44,10 @@ public class ClientesController : ControllerBase{
         var existe = await _context.Clientes.FindAsync(id);
         if(existe is null) return NotFound();
 
-        _context.Entry(Cliente).State = EntityState.Modified;
+        //_context.Entry(Produto).State = EntityState.Modified; isso por algum motivo não rodou, algo com o findasync e o entry produto estarem buscando em duplicidade o item, então pesquisei campo a campo
+        existe.Nome = Cliente.Nome;
+        existe.Email = Cliente.Email;
+        existe.Idade = Cliente.Idade;
 
         await _context.SaveChangesAsync();
 

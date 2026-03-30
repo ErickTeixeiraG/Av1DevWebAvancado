@@ -34,7 +34,7 @@ public class CategoriasController : ControllerBase{
         _context.Categorias.Add(categoria);
         await _context.SaveChangesAsync();
 
-        return CreatedAtRoute("GetCateoriaByID", new {id = categoria.Id}, categoria);
+        return CreatedAtRoute("GetCategoriaByID", new {id = categoria.Id}, categoria);
     }
 
     [HttpPut("{id:int}")]
@@ -44,7 +44,9 @@ public class CategoriasController : ControllerBase{
         var existe = await _context.Categorias.FindAsync(id);
         if(existe is null) return NotFound();
 
-        _context.Entry(Categoria).State = EntityState.Modified;
+        //_context.Entry(Produto).State = EntityState.Modified; isso por algum motivo não rodou, algo com o findasync e o entry produto estarem buscando em duplicidade o item, então pesquisei campo a campo
+        existe.Nome = Categoria.Nome;
+        existe.Descricao = Categoria.Descricao;
 
         await _context.SaveChangesAsync();
 
