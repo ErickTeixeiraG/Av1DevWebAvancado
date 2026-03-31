@@ -37,3 +37,8 @@ app.MapControllers();
 
 app.Run();
 
+//Nomes participantes equipe:
+// Guilherme Garcia dos Santos
+// Erick Teixeira 
+// Natã Batista
+// Pedro Henrique
