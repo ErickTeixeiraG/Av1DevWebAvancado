@@ -7,7 +7,7 @@ public class Categoria{
 
 
     [Required(ErrorMessage = "Nome da categoria é obrigatório.")]
-    [StringLength(80, MinimumLength = 3, ErrorMessage = "Nome deve ter entre 3 e 80 caracteres.")]
+    [StringLength(80, MinimumLength = 3, ErrorMessage = "Nome deve ter no mínimo 3 até 80 caracteres.")]
     public string Nome {get; set;} = string.Empty;
     
 

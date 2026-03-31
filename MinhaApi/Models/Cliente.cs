@@ -8,7 +8,7 @@ public class Cliente{
 
 
     [Required(ErrorMessage = "Nome é obrigatório.")]
-    [StringLength(100, MinimumLength = 3, ErrorMessage = "Nome deve ter entre 3 e 100 caracteres.")]
+    [StringLength(100, MinimumLength = 3, ErrorMessage = "Nome deve ter de 3 até 100 caracteres.")]
     public string Nome {get; set;} = string.Empty;
     
 
@@ -17,7 +17,7 @@ public class Cliente{
     public string Email {get; set;} = string.Empty;
 
     
-    [Range(18, 999999999, ErrorMessage = "Idade mínima é 18 anos.")]
+    [Range(18, int.MaxValue, ErrorMessage = "Idade mínima é 18 anos.")]
     public int Idade {get; set;}
 
 }
