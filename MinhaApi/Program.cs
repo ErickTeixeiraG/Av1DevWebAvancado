@@ -40,5 +40,5 @@ app.Run();
 //Nomes participantes equipe:
 // Guilherme Garcia dos Santos
 // Erick Teixeira 
-// Natã Batista
+// Natã Batista dos Santos
 // Pedro Henrique
